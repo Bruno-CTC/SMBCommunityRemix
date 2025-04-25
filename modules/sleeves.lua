@@ -177,7 +177,7 @@ if CardSleeves then
                         }
                         )
                         return {
-                            a_xchips = chip_mult,    
+                            Xchips = chip_mult,    
                             remove_default_message = true
                         }
                     end
