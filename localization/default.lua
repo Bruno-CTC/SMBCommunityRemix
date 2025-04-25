@@ -42,6 +42,12 @@ return {
                     '{C:rare}Rare{} Jokers give {C:chips}+100 Chips'
                 }
             },
+            sleeve_smb_seals = {
+                name = "Stamped",
+                text = { 
+                    '{C:uncommon}1/3{} chance to {C:uncommon}level up{} played hand'
+                }
+            },
             sleeve_smb_chesed_alt = {
                 name = "Page of Chesed",
                 text = { 
