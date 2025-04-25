@@ -77,8 +77,9 @@ if CardSleeves then
                 if context.end_of_round and context.game_over ~= true then
                     G.GAME.mist_chips = G.GAME.chips - G.GAME.blind.chips
                 end
-            elseif context.end_of_round and context.game_over ~= true then
+            elseif context.end_of_round and context.game_over ~= true and G.GAME.cut_blind then
                 G.GAME.mist_chips = G.GAME.mist_chips / 2
+                G.GAME.cut_blind = false
             end
 
             if context.setting_blind then
@@ -111,6 +112,7 @@ if CardSleeves then
                     if type ~= "Boss" then
                         tag = Tag(G.GAME.round_resets.blind_tags[type])
                         add_tag(tag)
+                        G.GAME.cut_blind = true
                     end
                 end
             end
