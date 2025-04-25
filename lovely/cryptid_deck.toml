@@ -1,0 +1,19 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 1000
+
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "if add and not G.GAME.banned_keys[v.key] then "
+position = "after"
+match_indent = true
+payload = '''
+    -- If the selected sleeve is the cryptid sleeve and this key is a Cryptid Joker, add a copy of it
+    -- to the pool, so that it is more common to get
+    if G.GAME.cryptid_sleeve_enabled and v.key:find('j_cry_') then
+      _pool[#_pool + 1] = v.key
+      _pool_size = _pool_size + 1
+    end
+'''

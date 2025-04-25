@@ -34,6 +34,22 @@ return {
                     'Does not work on Boss blinds.'
                 }
             },
+            sleeve_smb_chesed = {
+                name = "Page of Chesed",
+                text = { 
+                    '{C:common}Common{} Jokers give {C:chips}+25 Chips',
+                    '{C:uncommon}Uncommon{} Jokers give {C:chips}+50 Chips',
+                    '{C:rare}Rare{} Jokers give {C:chips}+100 Chips'
+                }
+            },
+            sleeve_smb_chesed_alt = {
+                name = "Page of Chesed",
+                text = { 
+                    '{C:common}Common{} Jokers give {C:chips}+10 and {X:chips,C:white}x1.05 Chips',
+                    '{C:uncommon}Uncommon{} Jokers give {C:chips}+25 and {X:chips,C:white}x1.1 Chips',
+                    '{C:rare}Rare{} Jokers give {C:chips}+100 Chips and and {X:chips,C:white}x1.25 Chips'
+                }
+            },
         }
     }
 }
