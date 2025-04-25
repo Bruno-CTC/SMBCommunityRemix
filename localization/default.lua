@@ -42,12 +42,24 @@ return {
                     '{C:rare}Rare{} Jokers give {C:chips}+100 Chips'
                 }
             },
+            sleeve_smb_seals = {
+                name = "Stamped",
+                text = { 
+                    '{C:uncommon}1/3{} chance to {C:uncommon}level up{} played hand'
+                }
+            },
             sleeve_smb_chesed_alt = {
                 name = "Page of Chesed",
                 text = { 
                     '{C:common}Common{} Jokers give {C:chips}+10 and {X:chips,C:white}x1.05 Chips',
                     '{C:uncommon}Uncommon{} Jokers give {C:chips}+25 and {X:chips,C:white}x1.1 Chips',
                     '{C:rare}Rare{} Jokers give {C:chips}+100 Chips and and {X:chips,C:white}x1.25 Chips'
+                }
+            },
+            sleeve_smb_cryptid = {
+                name = "Ritual Cryptidae",
+                text = { 
+                    '{C:dark_edition}Cryptid{} Jokers are {C:attention}twice{} as likely to appear.'
                 }
             },
         }
