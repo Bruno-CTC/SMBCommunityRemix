@@ -1,0 +1,13 @@
+{
+	"id": "SMB",
+	"name": "SMB Community Remix",
+	"display_name": "SMB Community Remix",
+	"author": ["NurbyTS, The Toll"],
+	"description": "Adds a bunch of bullshit made by , for us.",
+	"prefix": "smb",
+	"main_file": "SMB.lua",
+	"priority": 0,
+	"badge_colour": "6FC862",
+	"badge_text_colour": "FFFFFF",
+	"version": "1.0"
+}
