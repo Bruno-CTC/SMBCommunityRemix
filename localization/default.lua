@@ -63,6 +63,12 @@ return {
                     '{C:rare}Rare{} Jokers give {C:chips}+100 Chips and and {X:chips,C:white}x1.25 Chips'
                 }
             },
+            sleeve_smb_cryptid = {
+                name = "Ritual Cryptidae",
+                text = { 
+                    '{C:dark_edition}Cryptid{} Jokers are {C:attention}twice{} as likely to appear.'
+                }
+            },
         }
     }
 }

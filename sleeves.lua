@@ -17,7 +17,7 @@ if CardSleeves then
 			end
 			return { vars = {} }
 		end,
-        config = { extra_options = 1, extra_choices = 1 },
+        config = { extra_options = 0, extra_choices = 0 },
         apply = function(self)
             if self.get_current_deck_key() ~= "b_ruina_binah" then
                 self.config.extra_options = 1

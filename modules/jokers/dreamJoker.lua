@@ -3,10 +3,11 @@ SMODS.Joker {
     loc_txt = {
         name = 'Dream Joker',
         text = {
-            "Played {C:attention}Polychrome{} cards give {C:attention}+80 Chips{} when scored"
+            "Played {C:attention}Polychrome{} cards give",
+            "{C:attention}+80 Chips{} when scored"
         }
     },
-    config = { extra = { chips = 80 }},
+    config = { extra = { chips = 100 }},
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.chips } }
     end,

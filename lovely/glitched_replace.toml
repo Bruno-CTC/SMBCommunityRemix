@@ -1,0 +1,89 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 1000
+
+[[patches]]
+[patches.pattern]
+target = '=[SMODS Cryptid "items/code.lua"]'
+pattern = '''return create_card("Code", G.pack_cards, nil, nil, true, true, nil, "cry_program_1")'''
+position = "before"
+match_indent = true
+payload = '''
+    if pseudorandom("errored_card") > 0.9 then
+        return create_card("m_smb_errored", G.pack_cards, nil, nil, true, true, nil, "smb_errored_1")
+    end
+'''
+
+[[patches]]
+[patches.pattern]
+target = '=[SMODS Cryptid "items/code.lua"]'
+pattern = '''return create_card("Code", G.pack_cards, nil, nil, true, true, nil, "cry_program_2")'''
+position = "before"
+match_indent = true
+payload = '''
+    if pseudorandom("errored_card") > 0.9 then
+        return create_card("m_smb_errored", G.pack_cards, nil, nil, true, true, nil, "smb_errored_1")
+    end
+'''
+
+[[patches]]
+[patches.pattern]
+target = '=[SMODS Cryptid "items/code.lua"]'
+pattern = '''return create_card("Code", G.pack_cards, nil, nil, true, true, nil, "cry_program_j")'''
+position = "before"
+match_indent = true
+payload = '''
+    if pseudorandom("errored_card") > 0.9 then
+        return create_card("m_smb_errored", G.pack_cards, nil, nil, true, true, nil, "smb_errored_1")
+    end
+'''
+
+[[patches]]
+[patches.pattern]
+target = '=[SMODS Cryptid "items/code.lua"]'
+pattern = '''return create_card("Code", G.pack_cards, nil, nil, true, true, nil, "cry_program_m")'''
+position = "before"
+match_indent = true
+payload = '''
+    if pseudorandom("errored_card") > 0.9 then
+        return create_card("m_smb_errored", G.pack_cards, nil, nil, true, true, nil, "smb_errored_1")
+    end
+'''
+
+[[patches]]
+[patches.pattern]
+target = '=[SMODS Cryptid "lib/ui.lua"]'
+pattern = '''if card.ability.set == "Code" then'''
+position = "at"
+line_prepend = '$indent'
+match_indent = true
+payload = '''
+if card.ability.set == "Code" or card.ability.set == "m_smb_errored" then
+'''
+
+[[patches]]
+[patches.pattern]
+target = 'card.lua'
+pattern = '''pack_cards[i] = card'''
+position = "before"
+match_indent = true
+payload = '''
+if G.index_amount and G.index_amount > 0 then
+    card:set_edition({ cry_glitched = true })
+end
+'''
+
+[[patches]]
+[patches.pattern]
+target = 'card.lua'
+pattern = '''pack_cards[i] = card
+                end'''
+position = "after"
+match_indent = true
+payload = '''
+G.index_amount = G.index_amount or 0
+if G.index_amount > 0 then
+    G.index_amount = G.index_amount - 1
+end
+'''
