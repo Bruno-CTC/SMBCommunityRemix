@@ -1,4 +1,4 @@
-local endCard = smb.ErroredCard{
+local endCard = SMB.ErroredCard{
     key = "end",
     config = {cash_multiplier = 6, score_multiplier = 8},
     pos = {x = 0, y = 0},

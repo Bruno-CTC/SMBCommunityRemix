@@ -1,4 +1,4 @@
-local IndexCard = smb.ErroredCard{
+local IndexCard = SMB.ErroredCard{
     key = "index",
     config = {},
     pos = {x = 2, y = 0},

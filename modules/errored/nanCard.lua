@@ -1,4 +1,4 @@
-local NaNCard = smb.ErroredCard{
+local NaNCard = SMB.ErroredCard{
     key = "NaN",
     config = {min = 0.5, max = 2},
     pos = {x = 1, y = 0},
