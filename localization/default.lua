@@ -34,6 +34,13 @@ return {
                     'Does not work on Boss blinds.'
                 }
             },
+            sleeve_smb_cryptid = {
+                name = "Ritual Cryptidae",
+                text = { 
+                    '{C:dark_edition}Cryptid{} cards are {C:attention}2x{}',
+                    'more likely to appear',
+                }
+            },
             sleeve_smb_chesed = {
                 name = "Page of Chesed",
                 text = { 

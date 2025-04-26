@@ -143,7 +143,6 @@ if CardSleeves then
             return { vars = {} }
         end,
         apply = function(self)
-            G.GAME.cryptid_sleeve_enabled = true
         end,
         calculate = function(self, back, context)
             if context.final_scoring_step and math.random(1,3) == 2 then
