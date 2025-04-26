@@ -3,13 +3,13 @@ SMODS.Joker {
     loc_txt = {
         name = 'Dream Joker',
         text = {
-            "Played {C:attention}Polychrome{} cards give",
-            "{C:attention}+80 Chips{} when scored"
+            "Played {C:attention,T:e_polychrome}Polychrome{} cards give",
+            "{X:chips,C:white}x#1#{} Chips when scored"
         }
     },
-    config = { extra = { chips = 100 }},
+    config = { extra = { x_chips = 1.25 }},
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.chips } }
+        return { vars = { card.ability.extra.x_chips } }
     end,
     rarity = 2,
     atlas = 'jokers',
@@ -18,7 +18,7 @@ SMODS.Joker {
     calculate = function(self, card, context)
         if context.individual and context.cardarea == G.play and (context.other_card.edition or {}).key == 'e_polychrome' then
             return {
-                chips = card.ability.extra.chips
+                x_chips = card.ability.extra.x_chips
             }
         end
     end

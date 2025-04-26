@@ -1,5 +1,6 @@
 SMB = {}
 
+SMODS.load_file("modules/jokers/dreamJoker.lua")
 SMODS.load_file("utils/main_util.lua")()
 
 SMODS.Atlas { key = "cardSleeves", path = "atlasSleeves.png", px = 73, py = 95}
