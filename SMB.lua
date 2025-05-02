@@ -11,6 +11,7 @@ SMODS.Atlas { key = "erroredCards", path = "atlasErrored.png", px = 65, py = 95}
 SMB.load_cards("modules/types")
 
 
+SMB.load_cards("modules/sins")
 SMB.load_cards("modules/errored")
 SMB.load_cards("modules/jokers")
 if CardSleeves then

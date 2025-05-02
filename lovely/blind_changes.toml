@@ -1,0 +1,161 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 1000
+
+# ========== PATCH: Core Blind Display Logic ==========
+[[patches]]
+[patches.pattern]
+target = "blind.lua"
+pattern = """if self.config.blind then
+        if self.disabled then"""
+position = "at"
+match_indent = true
+payload = """
+-- Override blind display for Boss blind when condition is met
+if self.config.blind then
+	G.GAME.smb_blindness = G.GAME.smb_blindness or 0
+	if G.GAME.smb_blindness >= 1 and self.boss then
+		self.loc_name = '?????'
+		self.loc_debuff_text = ''
+		local options = {
+			"You see gold, not danger.",
+			"Greed clouded your sight.",
+			"Eyes open, yet blind.",
+			"Price paid in perception.",
+			"Fortune cost your foresight.",
+			"Blinded by desire.",
+			"Gold glittered, truth faded.",
+			"Hunger widened, vision narrowed.",
+			"Riches dulled your senses.",
+			"The shine stole your sight.",
+			"Greed lit the path, but darkened the end.",
+			"Opulence over clarity.",
+			"You traded sight for shine.",
+			"Your vision? Sold for gain.",
+			"Profit's cost: your eyes."
+		}
+		local random_index = math.random(1, #options)
+		self.loc_debuff_lines[1] = options[random_index]
+
+		local flavor_lines = {
+			"You wanted more. Now see less.",
+			"The blind chase glitters.",
+			"You see nothing—but want everything.",
+			"Greed stole your gaze.",
+			"Empty hands, empty eyes.",
+			"What glitters hides fangs.",
+			"Lust for more blinded your path.",
+			"Blindness isn’t a curse. It’s your reward.",
+			"Clarity was never profitable.",
+			"The blind don't fear—they hunger."
+		}
+		self.loc_debuff_lines[2] = flavor_lines[math.random(1, #flavor_lines)]
+	elseif self.disabled then
+"""
+
+# ========== PATCH: Blind Display Text and Color ==========
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = """local blind_amt = get_blind_amount(G.GAME.round_resets.blind_ante)*blind_choice.config.mult*G.GAME.starting_params.ante_scaling"""
+position = "after"
+match_indent = true
+payload = """
+-- Alter blind display for Boss blind
+if G.GAME.smb_blindness >= 1 and type == "Boss" then
+	local options = {
+		"You see gold, not danger.",
+		"Greed clouded your sight.",
+		"Eyes open, yet blind.",
+		"Price paid in perception.",
+		"Fortune cost your foresight.",
+		"Blinded by desire.",
+		"Gold glittered, truth faded.",
+		"Hunger widened, vision narrowed.",
+		"Riches dulled your senses.",
+		"The shine stole your sight.",
+		"Greed lit the path, but darkened the end.",
+		"Opulence over clarity.",
+		"You traded sight for shine.",
+		"Your vision? Sold for gain.",
+		"Profit's cost: your eyes."
+	}
+	loc_name = "?????"
+	text_table = {
+		options[math.random(1, #options)],
+		"",
+	}
+	blind_col = G.C.YELLOW
+	blind_amt = -1
+end
+"""
+
+# ========== PATCH: UI Blind Color ==========
+[[patches]]
+[patches.pattern]
+target = "functions/misc_functions.lua"
+pattern = """G.P_BLINDS[blind].boss_colour or"""
+position = "at"
+match_indent = true
+payload = """
+-- Change color logic for Boss blind
+(G.GAME.smb_blindness >= 1 and G.P_BLINDS[blind].boss_colour) and G.C.YELLOW or G.P_BLINDS[blind].boss_colour or
+"""
+
+# ========== PATCH: Blind Background Color ==========
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = """boss_col = v.boss_colour or G.C.BLACK"""
+position = "at"
+match_indent = true
+payload = """
+-- Change blind background color for Boss blind
+boss_col = (G.GAME.smb_blindness and G.GAME.smb_blindness >= 1) and G.C.YELLOW or v.boss_colour or G.C.BLACK
+"""
+
+# ========== PATCH: Blind Sprite Position ==========
+[[patches]]
+[patches.pattern]
+target = "blind.lua"
+pattern = """self.children.animatedSprite:set_sprite_pos(self.config.blind.pos)"""
+position = "at"
+match_indent = true
+payload = """
+-- Override blind sprite position
+self.children.animatedSprite:set_sprite_pos((G.GAME.smb_blindness >= 1 and self.boss) and {x = 0, y = 30} or self.config.blind.pos)
+"""
+
+# ========== PATCH: Blind Config Sprite Adjustments ==========
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = """local blind_choice = {
+    config = G.P_BLINDS[G.GAME.round_resets.blind_choices[type]],
+  }"""
+position = "after"
+match_indent = true
+payload = """
+-- Adjust blind config visuals if SMB blindness is active
+if G.GAME.smb_blindness >= 1 and type == "Boss" then
+	blind_choice.config.pos = {x = 0, y = 30}
+	if (blind_choice.config.mod) then
+		blind_choice.config.atlas = "blind_chips"
+	end
+end
+"""
+
+# ========== PATCH: Money multiplier effect ==========
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = """function ease_dollars(mod, instant)"""
+position = "after"
+match_indent = true
+payload = """
+-- Add money multiplier effect
+if G.GAME.smb_greed and G.GAME.smb_greed >= 1 and ((to_number and to_number(mod) > 0) or (mod > 0)) then
+	mod = mod * G.GAME.smb_greed
+end
+"""

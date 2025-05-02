@@ -56,7 +56,6 @@ payload = '''
 target = '=[SMODS Cryptid "lib/ui.lua"]'
 pattern = '''if card.ability.set == "Code" then'''
 position = "at"
-line_prepend = '$indent'
 match_indent = true
 payload = '''
 if card.ability.set == "Code" or card.ability.set == "m_smb_errored" then
