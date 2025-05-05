@@ -159,3 +159,52 @@ if G.GAME.smb_greed and G.GAME.smb_greed >= 1 and ((to_number and to_number(mod)
 	mod = mod * G.GAME.smb_greed
 end
 """
+
+# ========== PATCH: Debuff hand effect ==========
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = """if not G.GAME.blind:debuff_hand(G.play.cards, poker_hands, text) then"""
+position = "at"
+match_indent = true
+payload = """
+local sloth_proc = pseudorandom("sloth_debuff")
+if not G.GAME.blind:debuff_hand(G.play.cards, poker_hands, text) and ((G.GAME.smb_sloth == nil and G.GAME.smb_sloth_chance == nil) or sloth_proc > G.GAME.smb_sloth_chance) then
+"""
+
+# ========== PATCH: Debuff hand text ==========
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = """play_area_status_text("Not Allowed!")--localize('k_not_allowed_ex'), true)"""
+position = "at"
+match_indent = true
+payload = """
+print(G.GAME.smb_sloth_chance)
+print(sloth_proc)
+if G.GAME.smb_sloth_chance and sloth_proc <= G.GAME.smb_sloth_chance then
+	print("sus1")
+	play_area_status_text("The Sloth is lazy!")
+else
+	print("sus2")
+	play_area_status_text("Not Allowed!")
+end
+"""
+
+# ========== PATCH: Mult multiplier effect ==========
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = """local nu_chip, nu_mult = G.GAME.selected_back:trigger_effect{context = 'final_scoring_step', chips = hand_chips, mult = mult}"""
+position = "before"
+match_indent = true
+payload = """
+-- Add multiplier effect
+if G.GAME.smb_sloth_falter and G.GAME.smb_sloth then
+	if G.GAME.smb_sloth_falter >= 1 then
+		mult = mod_mult(mult*G.GAME.smb_sloth_mult)
+		update_hand_text({delay = 0}, {mult = mult})
+		play_area_status_text("Sloth's Blessing!", true, 0)
+	end
+end
+"""
