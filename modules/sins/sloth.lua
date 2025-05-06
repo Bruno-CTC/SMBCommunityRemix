@@ -8,10 +8,11 @@ SMB.SinConsumable{
     loc_txt = {
         name = 'Sloth',
         text = {
-            "Does something funny (#1#x to multiplier permanently but 1/#2# chance not to score)",
-            "\"Therefore I will give their wives to other men and their fields to new owners.",
-            "From the least to the greatest, all are greedy for gain;",
-            "prophets and priests alike, all practice deceit.\""
+            "Permanently applies a #1#x multiplier to hand score",
+            "\"The soul of the sluggard craves and gets nothing",
+            "while the soul of the diligent is richly supplied",
+            "The desire of the sluggard kills him,",
+            "for his hands refuse to labor.\""
         }
     },
     loc_vars = function(self, info_queue, card)

@@ -6,7 +6,8 @@ SMB.SinConsumable{
         name = 'Greed',
         text = {
             "Multiplies all future money gain by #1#x",
-            "\"Therefore I will give their wives to other men and their fields to new owners.",
+            "\"Therefore I will give their wives to",
+            "other men and their fields to new owners.",
             "From the least to the greatest, all are greedy for gain;",
             "prophets and priests alike, all practice deceit.\""
         }
