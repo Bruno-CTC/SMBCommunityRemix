@@ -1,5 +1,5 @@
 
-SMB.Errored = SMODS.ConsumableType{
+--[[SMB.Errored = SMODS.ConsumableType{
     key = "m_smb_errored",
     primary_colour = HEX('6C2325'),
     secondary_colour = HEX('090303'),
@@ -17,4 +17,4 @@ SMB.ErroredCard = SMODS.Consumable:extend {
 	atlas = "smb_erroredCards",
     unlocked = true,
 	discovered = true,
-}
+}]]
