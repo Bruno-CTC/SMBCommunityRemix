@@ -10,9 +10,9 @@ pattern = '''return create_card("Code", G.pack_cards, nil, nil, true, true, nil,
 position = "before"
 match_indent = true
 payload = '''
-    if pseudorandom("errored_card") > 0.9 then
+    --[[if pseudorandom("errored_card") > 0.9 then
         return create_card("m_smb_errored", G.pack_cards, nil, nil, true, true, nil, "smb_errored_1")
-    end
+    end]]
 '''
 
 [[patches]]
@@ -22,9 +22,9 @@ pattern = '''return create_card("Code", G.pack_cards, nil, nil, true, true, nil,
 position = "before"
 match_indent = true
 payload = '''
-    if pseudorandom("errored_card") > 0.9 then
+    --[[if pseudorandom("errored_card") > 0.9 then
         return create_card("m_smb_errored", G.pack_cards, nil, nil, true, true, nil, "smb_errored_1")
-    end
+    end]]
 '''
 
 [[patches]]
@@ -34,9 +34,9 @@ pattern = '''return create_card("Code", G.pack_cards, nil, nil, true, true, nil,
 position = "before"
 match_indent = true
 payload = '''
-    if pseudorandom("errored_card") > 0.9 then
+    --[[if pseudorandom("errored_card") > 0.9 then
         return create_card("m_smb_errored", G.pack_cards, nil, nil, true, true, nil, "smb_errored_1")
-    end
+    end]]
 '''
 
 [[patches]]
@@ -46,9 +46,9 @@ pattern = '''return create_card("Code", G.pack_cards, nil, nil, true, true, nil,
 position = "before"
 match_indent = true
 payload = '''
-    if pseudorandom("errored_card") > 0.9 then
+    --[[if pseudorandom("errored_card") > 0.9 then
         return create_card("m_smb_errored", G.pack_cards, nil, nil, true, true, nil, "smb_errored_1")
-    end
+    end]]
 '''
 
 [[patches]]
