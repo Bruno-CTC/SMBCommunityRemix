@@ -1,4 +1,4 @@
-SMB.Sin = SMODS.ConsumableType{
+--[[SMB.Sin = SMODS.ConsumableType{
     key = "m_smb_sin",
     primary_colour = HEX('090303'),
     secondary_colour = HEX('6C2325'),
@@ -16,4 +16,4 @@ SMB.SinConsumable = SMODS.Consumable:extend {
 	atlas = "smb_erroredCards",
     unlocked = true,
 	discovered = true,
-}
+}]]

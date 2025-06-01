@@ -41,7 +41,7 @@ payload = """
 -- Add multiplier effect
 if G.GAME.smb_sloth_falter and G.GAME.smb_sloth then
 	if G.GAME.smb_sloth_falter >= 1 then
-		mult = mod_mult(mult*G.GAME.smb_sloth_mult)
+		mult = mod_mult(mult^G.GAME.smb_sloth_mult)
 		update_hand_text({delay = 0}, {mult = mult})
 		--play_area_status_text("Sloth's Blessing!", true, 0)
 	end

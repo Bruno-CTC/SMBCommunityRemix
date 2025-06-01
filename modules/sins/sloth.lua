@@ -8,7 +8,7 @@ SMB.SinConsumable{
     loc_txt = {
         name = 'Sloth',
         text = {
-            "Permanently applies a #1#x multiplier to hand score",
+            "Permanently applies a ^#1# multiplier to hand score",
             "\"The soul of the sluggard craves and gets nothing",
             "while the soul of the diligent is richly supplied",
             "The desire of the sluggard kills him,",

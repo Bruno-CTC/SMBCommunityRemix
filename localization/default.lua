@@ -76,6 +76,29 @@ return {
                     '{C:rare}Rare{} Jokers give {C:chips}+100 Chips and and {X:chips,C:white}x1.25 Chips'
                 }
             },
+        },
+        Other = {
+            smb_crux = {
+                name = "Crux",
+                text = {
+                    "When scored, {C:attention}Crux{} cards permanently",
+                    "gain one of the following effects:",
+                    "{X:mult,C:white}×1.1{}, {X:chips,C:white}x1.1{}, {C:gold}+$1{}, {X:purple,C:white}^1.01{}",
+                    "or {C:gold}+0.25{} Ascension Power"
+                }
+            },
+            smb_crux_effects = {
+                name = "Crux Effects",
+                text = {
+                    "Currently: {X:mult,C:white}×#1#{}, {X:chips,C:white}x#2#{}, {C:gold}+$#3#{},",
+                    "{X:purple,C:white}^#4#{} and {C:gold}+#5#{}"
+                }
+            },
+        },
+    },
+    misc = {
+        labels = {
+            smb_crux = "Crux"
         }
     }
 }
