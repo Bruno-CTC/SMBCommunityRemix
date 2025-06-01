@@ -17,3 +17,6 @@ SMB.load_cards("modules/jokers")
 if CardSleeves then
     SMB.load_cards("modules/sleeves")
 end
+if Partner_API then
+    SMB.load_cards("modules/partners")
+end

@@ -3,6 +3,19 @@ return {
         Back = {
 
         },
+        Partner={
+            pnr_partner_trace={
+                name = "Trace",
+                text = {
+                    "{C:xmult}x1{} Mult for each empty {c:attention}Consumable{} slot."
+                },
+                unlock={
+                    "Used {C:attention}Joker",
+                    "to win on {C:attention}Gold",
+                    "{C:attention}Stake{} difficulty",
+                },
+            }
+        },
         Sleeve = {
             sleeve_smb_binah = {
                 name = "Page of Binah",
